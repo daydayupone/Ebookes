@@ -1,0 +1,373 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>通过网页进行 iOS 应用内部分发 - 张志敏 - 博客园</title>
+<link type="text/css" rel="stylesheet" href="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/common.css">
+<link id="MainCss" type="text/css" rel="stylesheet" href="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/style.css">
+<link type="text/css" rel="stylesheet" href="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/common2.css">
+<link type="text/css" rel="stylesheet" href="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/shStyle.css">
+<link type="text/css" rel="stylesheet" href="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/customcss.css">
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/beginor/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/beginor/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/beginor/wlwmanifest.xml">
+<script src="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/gpt.js" type="text/javascript" async=""></script><script src="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/ga.js" async="" type="text/javascript"></script><script src="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/jquery.js" type="text/javascript"></script>  
+<script type="text/javascript">
+var currentBlogApp = 'beginor';
+</script>
+<script src="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/common.js" type="text/javascript"></script> 
+<script src="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/json2.js" type="text/javascript"></script>
+<script type="text/javascript" src="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/syntaxHighlighter.js"></script>
+<script src="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/google_ads_gpt.js" type="text/javascript" async=""></script><script src="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/osd.js" type="text/javascript"></script></head>
+<body>
+<a name="top"></a>
+<!--PageBeginHtml Block Begin-->
+<script type="text/javascript" src="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/shBrushObjC.js"></script>
+<!--PageBeginHtml Block End-->
+
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+		
+<!--done-->
+<div class="title"><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/beginor/">张志敏</a></div>
+<div class="subtitle">我是一个靠谱的程序员, 目前关注 MonoTouch、 Mono for Android、 Silverlight、 ASP.NET MVC 以及 NHibernate。</div>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li id="nav_sitehome"><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li id="nav_myhome"><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/beginor/">首页</a></li>
+<li id="nav_q"><a class="menu" href="http://q.cnblogs.com/">博问</a></li>
+<li id="nav_ing"><a class="menu" href="http://home.cnblogs.com/ing/">闪存</a></li>
+<li id="nav_newpost"><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://www.cnblogs.com/beginor/admin/EditPosts.aspx?opt=1">新随笔</a></li>
+<li id="nav_contact"><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://space.cnblogs.com/msg/send/%e5%bc%a0%e5%bf%97%e6%95%8f">联系</a></li>
+<li id="nav_rss"><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/beginor/rss">订阅</a>
+<!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/beginor/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li id="nav_admin"><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://www.cnblogs.com/beginor/admin/EditPosts.aspx">管理</a></li>
+</ul>
+
+		<div class="blogStats">
+			
+			
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+	
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/beginor/archive/2013/01/25/2877200.html">通过网页进行 iOS 应用内部分发</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>介绍如何通过网页内部分发 iOS 应用， 包括 In-House 企业应用和 ad-hoc 测试应用。</p>
+
+<h3 id="_xcode_">原生 XCode 应用</h3>
+
+<p><strong>1. 归档编译</strong></p>
+
+<p>用 XCode 打开要分发的项目， 依次选择 <code>"Product" -&gt; "Build for" -&gt; "Archiving"</code>， 如下图：</p>
+
+<p><img src="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/product-build-for-archiving.png" alt="Build for Archiving"></p>
+
+<p>编译完成之后，就会生成 XCode 的项目归档， 接下来使用 Organizer 设置分发信息。</p>
+
+<p><strong>2. 使用 Organizer 设置分发信息</strong></p>
+
+<p>打开 Orangizer ， 选择 Archives 标签， 可以看到现有的 XCode 项目归档， 选择要分发的项目， 然后点击右边的 <code>Distribute...</code> 按钮， 如下图所示：</p>
+
+<p><img src="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/select-archive-project.png" alt="选择分发项目"></p>
+
+<p>接下来回弹出分发向导， 第一步分发方式， 选择 <code>Save for Enterprise  or Ad-Hoc Development</code>， 如下图所示：</p>
+
+<p><img src="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/select-distribution-method.png" alt="选择分发方式"></p>
+
+<p>点击 <code>Next</code> 按钮， 第二步选择代码签名， 选择 <code>Enterprise</code> 或者 <code>Ad-Hoc</code> 签名， 如下图所示：</p>
+
+<p><img src="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/select-code-sign-identity.png" alt="选择代码签名"></p>
+
+<p>点击 <code>Next</code> 按钮， 第三步填写分发信息， 选择应用保存位置以及名称， 同时要勾选 <code>Save for Enterprise Distribution</code>， 输入分发信息， 然后保存， 这样将会生成两个文件， 一个是后缀为 ipa 文件， 就是 iOS 程序本身了， 另一个是后缀为 plist 文件， 包含 ipa 文件的描述信息。</p>
+
+<p><img src="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/select-ipa-location.png" alt="填写分发信息"></p>
+
+<p><strong>3. 部署到内部 Web 服务器</strong></p>
+
+<p>将上一部最终生成的 ipa 以及 plist 文件复制到内部的 Web 服务器， 在网页上添加类似这样的链接：</p>
+
+<pre><code>&lt;a href="itms-services://?action=download-manifest&amp;url=http://url-to-your-app.plist"&gt;安装移动办公iOS版&lt;/a&gt;</code></pre>
+
+<p>Web 服务器上可能需要添加 .plist 和 .ipa 的 Mime 类型， 它们的 Mime 类型分别为：</p>
+
+<ul>
+<li><code>.plist : text/xml</code>;</li>
+
+<li><code>.ipa : application/octet-stream</code></li>
+</ul>
+
+<p><strong>4. iOS 设备下载安装</strong></p>
+
+<p>用 iOS 设备访问网页， 点击链接就可以直接安装了。 如果是未越狱的设备， 需要确认签名许可包含了设备的 UDID ， 否则无法安装。</p>
+
+<h3 id="monotouch_">MonoTouch 应用</h3>
+
+<p>对于 MonoTouch 编写的应用， 需要将 MonoDevelop 升级到最新版的 3.1.1 ， 在 <code>Build</code> 菜单下也添加了 <code>Achive</code> 选项， 选择 <code>Arcive</code> 菜单进行编译， 就会在 XCode 的 Organizer 的 Archives 标签下能看到对应的项目， 接下来就和上面的步骤一致了。</p>
+</div><div id="MySignature"><p>
+<a href="http://beginor.github.com/">张志敏</a>所有文章遵循<a href="http://creativecommons.org/licenses/by-nc/3.0/deed.zh">创作共用版权协议</a>，要求<b>署名、非商业 、保持一致</b>。在满足<a href="http://creativecommons.org/licenses/by-nc/3.0/deed.zh">创作共用版权协议</a>的基础上可以转载，但请以超链接形式注明出处。</p>
+
+<p>
+<b>本博客已经迁移到 GitHub ， 围观地址： <a href="http://beginor.github.io/" target="_blank">http://beginor.github.io/</a></b>
+</p></div>
+<script type="text/javascript">
+var isLogined = false;
+var cb_blogId = 12542;
+var cb_entryId = 2877200;
+var cb_blogApp = currentBlogApp;
+var cb_blogUserGuid = "e19f310b-63cf-dd11-9e4d-001cf0cd104b";
+var cb_entryCreatedDate = '2013/1/25 19:11:00';
+var enableGoogleAd = true;
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+</script>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="blog_post_info"><div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/beginor/category/357773.html">iOS</a></div>
+<div id="EntryTag"></div>
+<div id="green_channel">
+绿色通道：
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(cb_entryId,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://space.cnblogs.com/msg/send/%e5%bc%a0%e5%bf%97%e6%95%8f" target="_blank">与我联系</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/icon_weibo_24.png" alt=""></a>
+</div>
+<div id="digg_block">
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/beginor/" target="_blank"><img src="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/u8989.jpg" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/beginor/">张志敏</a><br>
+<a href="http://home.cnblogs.com/u/beginor/followees">关注 - 0</a><br>
+<a href="http://home.cnblogs.com/u/beginor/followers">粉丝 - 122</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+<a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+	<div class="diggit" onclick="votePost(cb_entryId,'Digg')"> 
+		<span class="diggnum" id="digg_count">1</span>
+	</div>
+	<div class="buryit" onclick="votePost(cb_entryId,'Bury')"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/beginor/archive/2013/01/13/2858228.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/beginor/archive/2013/01/13/2858228.html" title="发布于2013-01-13 10:29">使用 Intel HAXM 为 Android 模拟器加速，媲美真机</a><br><a href="http://www.cnblogs.com/beginor/archive/2013/04/14/3019807.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/beginor/archive/2013/04/14/3019807.html" title="发布于2013-04-14 07:09">System.Net.Http for Silverlight</a><br></div>
+</div>
+<script type="text/javascript">
+    //SyntaxHighlighter.config.strings.expandSource = '<span><img src="http://static.cnblogs.com/images/expand-code.gif" alt="" class="expand-code-icon"/>View Code</span>';
+    $(function () {  
+        loadViewCount(cb_entryId);
+        fixPostBodyFormat();
+        loadAdUnderPost();
+        loadBlogSignature();
+        LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+        GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate);        
+        GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);        
+    });
+</script>
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2013-01-25 19:11</span> <a href="http://www.cnblogs.com/beginor/">张志敏</a> 阅读(<span id="post_view_count">2324</span>) 评论(<span id="post_comment_count">0</span>)  <a href="http://www.cnblogs.com/beginor/admin/EditPosts.aspx?postid=2877200" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(2877200);return false;">收藏</a></div>
+	</div>
+	<script src="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/2877200.js" type="text/javascript"></script>
+	
+</div><!--end: topics 文章、评论容器-->
+<div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id="comment_form" class="commentform">
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" id="lnk_RefreshComments" onclick="return RefreshCommentList();">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div class="login_tips">注册用户登录后才能发表评论，请 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login('commentform');">登录</a> 或 <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，<a href="http://www.cnblogs.com/">访问</a>网站首页。</div></div>
+
+<script type="text/javascript">
+    if (typeof commentManager === 'undefined') {
+        commentManager = new blogCommentManager();
+    }
+    commentManager.loadCommentForm();   
+</script>
+
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+<div id="site_nav_under"><a href="http://www.cnblogs.com/" target="_blank" title="程序员的网上家园">博客园首页</a><a href="http://q.cnblogs.com/" target="_blank" title="程序员问答社区">博问</a><a href="http://news.cnblogs.com/" target="_blank" title="IT新闻">新闻</a><a href="http://home.cnblogs.com/ing/" target="_blank">闪存</a><a href="http://job.cnblogs.com/" target="_blank">程序员招聘</a><a href="http://kb.cnblogs.com/" target="_blank">知识库</a></div>
+<div id="ad_under_post_holder">
+<div id="google_ad_c1" class="c_ad_block">
+    <!-- cnblogs_blogpost_C1_sitehome -->
+    <div id="div-gpt-ad-1346480159711-0" style="width: 300px; height: 250px;">
+    
+    <iframe src="javascript:&quot;<html><body style='background:transparent'></body></html>&quot;" style="border: 0px none; vertical-align: bottom;" marginheight="0" marginwidth="0" name="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0" id="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0" frameborder="0" height="250" scrolling="no" width="300"></iframe><iframe src="javascript:&quot;<html><body style='background:transparent'></body></html>&quot;" style="border: 0px none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0__hidden__" id="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0__hidden__" frameborder="0" height="0" scrolling="no" width="0"></iframe></div>
+</div>
+<div id="blog_news_kb"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/186937/" target="_blank">爱奇艺秋季档新增24部美剧 含《黑名单》等</a><br> ·  <a href="http://news.cnblogs.com/n/186935/" target="_blank">黑客泪流满面：量子加密将应用到智能手机</a><br> ·  <a href="http://news.cnblogs.com/n/186934/" target="_blank">神州泰岳手游收购吹泡泡：俩控制人浮盈16亿</a><br> ·  <a href="http://news.cnblogs.com/n/186933/" target="_blank">易信成营销帐号新圈地对象 网易将对“添加好友”设限</a><br> ·  <a href="http://news.cnblogs.com/n/186932/" target="_blank">Chrome发布五周年</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_blank">更多新闻...</a></div><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/176945/" target="_blank">字符串匹配的Boyer-Moore算法</a><br> ·  <a href="http://kb.cnblogs.com/page/176818/" target="_blank">字符串匹配的KMP算法</a><br> ·  <a href="http://kb.cnblogs.com/page/186559/" target="_blank">虚拟的宇宙</a><br> ·  <a href="http://kb.cnblogs.com/page/186346/" target="_blank">计算机专业学习浅谈</a><br> ·  <a href="http://kb.cnblogs.com/page/186221/" target="_blank">遗失的乔布斯访谈</a><br></div>» <a href="http://kb.cnblogs.com/" target="_blank">更多知识库文章...</a></div></div>
+<div id="google_ad_c2" class="c_ad_block">
+    <!-- cnblogs_blogpost_C2_sitehome -->
+    <div id="div-gpt-ad-1346479110744-1" style="width: 468px; height: 60px;">
+    
+    <iframe src="javascript:&quot;<html><body style='background:transparent'></body></html>&quot;" style="border: 0px none; vertical-align: bottom;" marginheight="0" marginwidth="0" name="google_ads_iframe_/1090369/cnblogs_blogpost_C2_sitehome_0" id="google_ads_iframe_/1090369/cnblogs_blogpost_C2_sitehome_0" frameborder="0" height="60" scrolling="no" width="468"></iframe></div>
+</div></div>
+<div id="HistoryToday" class="c_ad_block"></div>
+</div>
+
+
+
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><table>
+<tbody><tr>
+<td align="right">GitHub：</td>
+<td>
+<a href="http://beginor.github.io/">http://beginor.github.io/</a>
+</td>
+</tr>
+<tr>
+<td align="right">微博：</td>
+<td>
+<a href="http://weibo.com/beginor">http://weibo.com/beginor</a>
+</td>
+</tr>
+</tbody></table><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/beginor/">张志敏</a><br>园龄：<a href="http://home.cnblogs.com/u/beginor/" title="入园时间：2005-07-07">8年1个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/beginor/followers/">122</a><br>关注：<a href="http://home.cnblogs.com/u/beginor/followees/">0</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger('e19f310b-63cf-dd11-9e4d-001cf0cd104b')">+加关注</a></div></div></div>
+</div>
+
+			<div id="calendar"><div id="blog-calendar" style="displya:none"></div></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn">
+
+<div class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="widget_my_zzk" class="div_my_zzk"><input id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk" type="text">&nbsp;<input onclick="zzk_go()" value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+
+</div>
+
+
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+
+		<li><a id="ctl01_rptMainLinks_lnkLinkItem_0" href="http://www.cnblogs.com/beginor/MyPosts.html">我的随笔</a></li>
+	
+		<li><a id="ctl01_rptMainLinks_lnkLinkItem_1" href="http://www.cnblogs.com/beginor/MyComments.html">我的评论</a></li>
+	
+		<li><a id="ctl01_rptMainLinks_lnkLinkItem_2" title="我发表过评论的随笔" href="http://www.cnblogs.com/beginor/OtherPosts.html">我的参与</a></li>
+	
+		<li><a id="ctl01_rptMainLinks_lnkLinkItem_3" href="http://www.cnblogs.com/beginor/RecentComments.html">最新评论</a></li>
+	
+		<li><a id="ctl01_rptMainLinks_lnkLinkItem_4" href="http://www.cnblogs.com/beginor/tag/">我的标签</a></li>
+	
+</ul>
+<div id="itemListLin_con" style="display:none;">
+<ul>
+
+</ul>
+</div>
+</div>
+<div class="catListPostCategory">
+<h3 class="catListTitle">随笔分类<span style="font-size:11px;font-weight:normal">(170)</span></h3>
+
+<ul>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/beginor/category/64505.html">.Net Framework(28)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/beginor/category/118451.html">AJAX(10)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/beginor/category/445551.html">Android</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/beginor/category/56418.html">ASP.Net(13)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/beginor/category/249223.html">ASP.NET MVC(3)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/beginor/category/124717.html">Ext JS(18)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/beginor/category/357773.html">iOS(7)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/beginor/category/56421.html">Managed DirectX(4)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/beginor/category/316928.html">Mono(8)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/beginor/category/425067.html">Mono for Android(3)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/beginor/category/64697.html">My Projects(5)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/beginor/category/282608.html">NHibernate(4)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/beginor/category/214368.html">OpenGL(1)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/beginor/category/56424.html">Others(26)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_14" href="http://www.cnblogs.com/beginor/category/64506.html">Refferences(19)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_15" href="http://www.cnblogs.com/beginor/category/193686.html">Silverlight(18)</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_16" href="http://www.cnblogs.com/beginor/category/282609.html">Unity3D</a> </li>
+
+<li><a id="ctl03_CatList_LinkList_0_Link_17" href="http://www.cnblogs.com/beginor/category/56420.html">WinForm(3)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListImageCategory">
+<h3 class="catListTitle">相册</h3>
+
+<ul>
+
+<li><a id="ctl03_CatList_LinkList_1_Link_0" rel="nofollow" href="http://www.cnblogs.com/beginor/gallery/66986.html">WorldWind相关截图</a> </li>
+
+</ul>
+
+</div>
+
+
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/beginor/archive/2011/05/12/2044583.html">1. 几款 .Net Reflector 的替代品(13)</a></li><li><a href="http://www.cnblogs.com/beginor/archive/2012/01/16/2323265.html">2. 使用 Task 简化异步编程(10)</a></li><li><a href="http://www.cnblogs.com/beginor/archive/2012/06/08/2542110.html">3. 开源一个 Sliverlight 导航框架(7)</a></li><li><a href="http://www.cnblogs.com/beginor/archive/2012/04/25/2469545.html">4. 让 VS 编译 MonoTouch 项目源文件不再出错(7)</a></li><li><a href="http://www.cnblogs.com/beginor/archive/2012/11/02/2751125.html">5. 我的第一个 Mono for Android 应用(7)</a></li></ul></div>
+</div></div>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2013 张志敏
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+<script type="text/javascript" src="iOS%20%E5%BA%94%E7%94%A8%E5%86%85%E9%83%A8%E5%88%86%E5%8F%91%20-%20%E5%BC%A0%E5%BF%97%E6%95%8F%20-%20%E5%8D%9A%E5%AE%A2%E5%9B%AD_files/google-analytics.js"></script>
+
+
+</body></html>

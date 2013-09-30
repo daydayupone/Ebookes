@@ -1,0 +1,1 @@
+BAIDU_CPRO_SETJSONADSLOT({ "u167993" : { "_html" : "cpro_client=xue5_cpr|cpro_at=all|cpro_161=3|cpro_flush=4|cpro_w=640|cpro_h=60|cpro_template=text_default_640_60|cpro_cbd=#FFFFFF|cpro_cbg=#FFFFFF|cpro_ctitle=#0000ff|cpro_cdesc=#444444|cpro_curl=#008000|cpro_cflush=#e10900|cpro_uap=1|cpro_cad=1", "_dai" : 3 }  }); 

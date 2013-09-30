@@ -1,0 +1,1 @@
+jsonp_callback_30248({"pid":"mm_11220363_1101997_13474142","acookie":"1","width":"640","height":"90","stdwidth":"","stdheight":"","distype":"1","webwidth":"","adboardtype":"6","fvs":"","title":null,"clickurl":"","data":"http:\/\/strip.taobaocdn.com\/tfscom\/T1seBGFXtcXXbMsGbX.html","icon":"","feedback":"","unregist":""});

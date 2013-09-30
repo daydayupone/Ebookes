@@ -1,0 +1,522 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" dir="ltr"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>从零开始，创建GitHub团队开发环境 - Sabrina &amp; Joshua Java Ivory Tower - ITeye技术网站</title>
+    <meta name="description" content="  GitHub提供免费的团队环境，不过免费仓库容量是300MB，请大家注意。  &nbsp;  申请GitHub个人账号  1. 使用浏览器访问GitHub主页。如果使用IE，尽量不使用IE9以� ...">
+    <meta name="keywords" content="github, GitHub 从零开始，创建GitHub团队开发环境">
+    <link rel="shortcut icon" href="http://joshuasabrina.iteye.com/images/favicon.ico" type="image/x-icon">
+    <link rel="search" type="application/opensearchdescription+xml" href="http://joshuasabrina.iteye.com/open_search.xml" title="ITeye">
+    <link href="http://joshuasabrina.iteye.com/rss" rel="alternate" title="Sabrina &amp; Joshua Java Ivory Tower" type="application/rss+xml">
+    <link href="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/blog.css" media="screen" rel="stylesheet" type="text/css">
+<link href="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/black.css" media="screen" rel="stylesheet" type="text/css">
+    <script src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/ga.js" async="" type="text/javascript"></script><script src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/application.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-535605-1']);
+  _gaq.push(['_setDomainName', 'iteye.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+      <link href="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/SyntaxHighlighter.css" media="screen" rel="stylesheet" type="text/css">
+  <script src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/shCoreCommon.js" type="text/javascript"></script>
+<script src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/hotkey.js" type="text/javascript"></script>
+  <script src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/code_favorites.js" type="text/javascript"></script>
+<script src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/weiboshare.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div id="header">
+      <div id="blog_site_nav">
+  <a href="http://www.iteye.com/" class="homepage">首页</a>
+  <a href="http://www.iteye.com/news">资讯</a>
+  <a href="http://www.iteye.com/magazines">精华</a>
+  <a href="http://www.iteye.com/forums">论坛</a>
+  <a href="http://www.iteye.com/ask">问答</a>
+  <a href="http://www.iteye.com/blogs">博客</a>
+  <a href="http://www.iteye.com/blogs/subjects">专栏</a>
+  <a href="http://www.iteye.com/groups">群组</a>
+  <a href="#" onclick="return false;" id="msna"><u>更多</u> <small>▼</small></a>
+  <div class="quick_menu" style="display:none;">
+    <a target="_blank" href="http://job.iteye.com/iteye">招聘</a>
+    <a href="http://www.iteye.com/search">搜索</a>
+  </div>
+</div>
+
+      <div id="user_nav">
+      <a href="http://joshuasabrina.iteye.com/login" class="welcome" title="登录">您还未登录 !</a>
+    <a href="http://joshuasabrina.iteye.com/login">登录</a>
+    <a href="http://joshuasabrina.iteye.com/signup" class="nobg">注册</a>
+  </div>
+
+    </div>
+
+    <div id="page">
+      <div id="branding" class="clearfix">
+        <div id="blog_name">
+          <h1><a href="http://joshuasabrina.iteye.com/">Sabrina &amp; Joshua Java Ivory Tower</a></h1>
+        </div>
+        <div id="fd"></div>
+        <div id="blog_navbar">
+          <ul>
+            <li class="blog_navbar_for"><a href="http://joshuasabrina.iteye.com/"><strong>博客</strong></a></li>
+            <li><a href="http://joshuasabrina.iteye.com/weibo">微博</a></li>
+            <li><a href="http://joshuasabrina.iteye.com/album">相册</a></li>
+            <li><a href="http://joshuasabrina.iteye.com/link">收藏</a></li>
+            <li><a href="http://joshuasabrina.iteye.com/blog/guest_book">留言</a></li>
+            <li><a href="http://joshuasabrina.iteye.com/blog/profile">关于我</a></li>
+          </ul>
+    
+          <div class="search">
+            <form action="/blog/search" method="get">
+              <input class="search_text" id="query" name="query" style="margin-left: 10px;width: 110px;" type="text">
+              <input class="submit_search" value="" type="submit">
+            </form>
+          </div> 
+          <div id="fd"></div>         
+        </div>
+      </div>
+      
+      <div id="content" class="clearfix">
+        <div id="main">
+          
+
+
+
+          
+
+
+<div class="h-entry" style="display:none">
+  <a href="http://joshuasabrina.iteye.com/" class="p-author" target="_blank">joshuasabrina</a>
+</div>
+
+
+<div class="blog_main">
+  <div class="blog_title">
+    <h3>
+      <a href="http://joshuasabrina.iteye.com/blog/1816597">从零开始，创建GitHub团队开发环境</a>
+      <em class="actions">      </em>
+    </h3>
+    <ul class="blog_categories"><strong>博客分类：</strong> <li><a href="http://joshuasabrina.iteye.com/category/268372">Tools</a></li> </ul>
+        <div class="news_tag"><a href="http://www.iteye.com/blogs/tag/github">github</a><a href="http://www.iteye.com/blogs/tag/GitHub">GitHub</a></div>
+  </div>
+
+  <div id="blog_content" class="blog_content">
+    <div style="font-size: 14px;" class="iteye-blog-content-contain">
+<p>GitHub提供免费的团队环境，不过免费仓库容量是300MB，请大家注意。</p>
+<p>&nbsp;</p>
+<h2>申请GitHub个人账号</h2>
+<p>1. 使用浏览器访问<a href="https://github.com/" target="_blank">GitHub主页</a>。如果使用IE，尽量不使用IE9以下的版本。</p>
+<p>2.1. 没有申请过GitHub账号，请点击绿色的【Sign up for free】按钮</p>
+<p><br><img alt="" src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/8d6877de-74c7-30c0-b3f3-312500f9640d.png" height="256" width="539"></p>
+<p>填写用户名、邮箱、密码后，点击绿色的【Create an account】按钮。&nbsp;</p>
+<p>&nbsp;</p>
+<p>2.2 如果已经有GitHub账号了请点击上图中的【Sign In】按钮登陆。&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>创建组织&nbsp;</h2>
+<p>组织的概念可以理解成公司，机构等。</p>
+<p>1. 登陆GitHub</p>
+<p>2. 点击左上角，用户名旁的下拉按钮，点击【Manage Organizations】</p>
+<p><br><img alt="" src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/554924a3-667b-383f-9f95-94e75f590ae1.png"><br>&nbsp;</p>
+<p>3. 页面跳转至【组织】页面后，单击【Create new organization】按钮</p>
+<p>4. 页面跳转至【Create an organization】页面后，填写组织名和邮箱。免费用户请无视下方的付费计划。滚动页面至页脚处，点击绿色【Create organization】按钮。</p>
+<p>5. 跳转至【Invite your team member】页面后，为组织指定Owner(最高权限)。在输入框中填写GitHub已有的用户的用户名(系统会帮助自动提示用户名)，点击右侧的【Add】按钮。比如：填写自己的用户名。</p>
+<p><br><img alt="" src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/ccd6bdf2-5b11-3be5-ba34-77fd9dc2848e.png"><br>&nbsp;</p>
+<p>&nbsp;</p>
+<p>6. 完成后点击上图中的【I‘m done here, continue to the organization dashboard】</p>
+<p>&nbsp;</p>
+<p>至此，组织创建完毕。一个公司下可能有多个团队，也会有多个项目的代码、文档、Bug需要维护。Github允许用户在组织下创建多个Team, 多个Repository。并提供Team和Repository的关联。</p>
+<p>&nbsp;</p>
+<h2>创建GitHub团队仓库</h2>
+<p>1. 创建完组织后，自动跳转到组织主页，也可以直接使用https://github.com/organizations/组织名 来访问。</p>
+<p>&nbsp;<br><img alt="" src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/a9e59429-80cc-34cb-a9c5-b8b83982cb3d.png" height="149" width="638"><br>&nbsp;</p>
+<p>2. 点击上图中，右侧的深灰色【NewRepository】按钮。</p>
+<p>3. 如下图填写仓库信息后，点击绿色【Create repository】按钮。</p>
+<p><img style="line-height: 1.5;" alt="" src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/2f7517ad-a001-319a-ab39-96767a4c02c8.png" height="337" width="479"><br>&nbsp;4. 成功创建仓库后，请回到组织主页。准备开始创建Team</p>
+<p>&nbsp;</p>
+<h2>创建Team</h2>
+<p>1. 点击组织主页上的名为Team的TAB，进入Team配置页，如下：</p>
+<p><img alt="" src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/1f8e54bc-539b-3367-8ff9-3b87a7356202.png" height="167" width="665"><br>&nbsp;2. 点击上图中的【New Team】按钮，开始创建团队。</p>
+<p><img alt="" src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/5f3345ba-22c7-3686-9425-ec16032f7417.png" height="170" width="575"></p>
+<p>填写团队名字，如：Architest。</p>
+<p>选择团队的权限，GitHub提供3档权限。自上而下分别是：签出；签入签出；管理员</p>
+<p>添加团队成员，请在Members的输入框内填入已有GitHub用户的用户名，并点击右侧的【Add】按钮。</p>
+<p>添加团队的仓库，请在Repositories的输入框内填写仓库名，格式为：组织名/仓库名。点击右侧【Add】按钮添加。在此请注意：可选的仓库只是当前组织下的仓库，你的个人仓库不属于可选的仓库。</p>
+<p>&nbsp;</p>
+<p>完成后，点击【Save Team】完成配置。至此GitHub的团队开发环境已经构建完毕。</p>
+<p>&nbsp;</p>
+<h2>签入签出代码&nbsp;</h2>
+<p>GitHub提供了多种方式。比较推荐的是GitHub客户端、GitHub的eclipse插件、TortoiseSVN(小乌龟)。</p>
+<p>最佳选择是后两种。</p>
+<p>&nbsp;</p>
+<p>GitHub Eclipse插件：&nbsp;http://eclipse.github.com/</p>
+<p>小乌龟的用法不再赘述了，适合于习惯使用SVN客户端的用户。需要提醒的是SVN地址是https://github.com/组织名/仓库名</p>
+</div>
+  </div>
+
+  
+  <div class="attachments">
+    
+      
+        <ul style="display:none;">
+          <li><a href="http://dl2.iteye.com/upload/attachment/0080/9082/8d6877de-74c7-30c0-b3f3-312500f9640d.png" target="_blank"><img src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/8d6877de-74c7-30c0-b3f3-312500f9640d-thumb.png" class="magplus" title="点击查看原始大小图片"></a></li>
+          
+          <li>大小: 37.2 KB</li>
+        </ul>
+      
+    
+      
+        <ul style="display:none;">
+          <li><a href="http://dl2.iteye.com/upload/attachment/0080/9088/554924a3-667b-383f-9f95-94e75f590ae1.png" target="_blank"><img src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/554924a3-667b-383f-9f95-94e75f590ae1-thumb.png" class="magplus" title="点击查看原始大小图片"></a></li>
+          
+          <li>大小: 32.8 KB</li>
+        </ul>
+      
+    
+      
+        <ul style="display:none;">
+          <li><a href="http://dl2.iteye.com/upload/attachment/0080/9092/ccd6bdf2-5b11-3be5-ba34-77fd9dc2848e.png" target="_blank"><img src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/ccd6bdf2-5b11-3be5-ba34-77fd9dc2848e-thumb.png" class="magplus" title="点击查看原始大小图片"></a></li>
+          
+          <li>大小: 17.1 KB</li>
+        </ul>
+      
+    
+      
+        <ul style="display:none;">
+          <li><a href="http://dl2.iteye.com/upload/attachment/0080/9096/a9e59429-80cc-34cb-a9c5-b8b83982cb3d.png" target="_blank"><img src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/a9e59429-80cc-34cb-a9c5-b8b83982cb3d-thumb.png" class="magplus" title="点击查看原始大小图片"></a></li>
+          
+          <li>大小: 23.4 KB</li>
+        </ul>
+      
+    
+      
+        <ul style="display:none;">
+          <li><a href="http://dl2.iteye.com/upload/attachment/0080/9099/2f7517ad-a001-319a-ab39-96767a4c02c8.png" target="_blank"><img src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/2f7517ad-a001-319a-ab39-96767a4c02c8-thumb.png" class="magplus" title="点击查看原始大小图片"></a></li>
+          
+          <li>大小: 28 KB</li>
+        </ul>
+      
+    
+      
+        <ul style="display:none;">
+          <li><a href="http://dl2.iteye.com/upload/attachment/0080/9101/1f8e54bc-539b-3367-8ff9-3b87a7356202.png" target="_blank"><img src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/1f8e54bc-539b-3367-8ff9-3b87a7356202-thumb.png" class="magplus" title="点击查看原始大小图片"></a></li>
+          
+          <li>大小: 18.1 KB</li>
+        </ul>
+      
+    
+      
+        <ul style="display:none;">
+          <li><a href="http://dl2.iteye.com/upload/attachment/0080/9103/5f3345ba-22c7-3686-9425-ec16032f7417.png" target="_blank"><img src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/5f3345ba-22c7-3686-9425-ec16032f7417-thumb.png" class="magplus" title="点击查看原始大小图片"></a></li>
+          
+          <li>大小: 19.1 KB</li>
+        </ul>
+      
+    
+    
+      <ul>
+        <li><a href="#" onclick="$$('div.attachments ul').invoke('show');$(this).up(1).hide();return false;">查看图片附件</a></li>
+      </ul>
+    
+  </div>
+
+
+
+  
+  
+  <div id="bottoms" class="clearfix">
+    
+    <div id="share_weibo">分享到：
+      <a data-type="sina" href="javascript:;" title="分享到新浪微博"><img src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/sina.jpg"></a>
+      <a data-type="qq" href="javascript:;" title="分享到腾讯微博"><img src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/tec.jpg"></a>
+    </div>
+  </div>
+
+  <div class="blog_nav">
+    <div class="pre_next">
+      <a href="http://joshuasabrina.iteye.com/blog/1821118" class="next" title="Eclipse编译JMeter-2.9源码">Eclipse编译JMeter-2.9源码</a>
+      |
+      <a href="http://joshuasabrina.iteye.com/blog/1814689" class="pre" title="【趣味题】Java实现文件拷贝最少需要多少行代码">【趣味题】Java实现文件拷贝最少需要多少行 ...</a>
+    </div>
+  </div>
+  <div class="blog_bottom">
+    <ul>
+      <li>2013-02-27 15:19</li>
+      <li>浏览 424</li>
+      <li><a href="#comments">评论(0)</a></li>
+      
+      
+      <li>分类:<a href="http://www.iteye.com/blogs/category/opensource">开源软件</a></li>      
+      <li class="last"><a href="http://www.iteye.com/wiki/blog/1816597" target="_blank" class="more">相关推荐</a></li>
+    </ul>
+  </div>
+
+  <div class="blog_comment">
+    <h5>评论</h5>
+    <a id="comments" name="comments"></a>
+    
+    
+    
+  </div>
+
+  <div class="blog_comment">
+    <h5>发表评论</h5>
+            <p style="text-align:center; margin-top:30px;margin-bottom:0px;"><a href="http://joshuasabrina.iteye.com/login" style="background-color:white;"> <img src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/login_icon.png" style="vertical-align:middle; margin-right: 10px;"></a><a href="http://joshuasabrina.iteye.com/login">  您还没有登录,请您登录后再发表评论 </a></p>
+      </div>
+</div>
+
+
+<script type="text/javascript">
+  dp.SyntaxHighlighter.HighlightAll('code', true, true);
+
+  $$('#main .blog_content pre[name=code]').each(function(pre, index){ // blog content
+    var post_id = 1816597;
+    var location = window.location;
+    source_url = location.protocol + "//" + location.host + location.pathname + location.search;
+    pre.writeAttribute('codeable_id', post_id);
+    pre.writeAttribute('codeable_type', "Blog");
+    pre.writeAttribute('source_url', source_url);
+    pre.writeAttribute('pre_index', index);
+    pre.writeAttribute('title', '从零开始，创建GitHub团队开发环境');
+  });
+
+  fix_image_size($$('div.blog_content img'), 700);
+
+  function processComment() {
+    $$('#main .blog_comment > div').each(function(comment){// comment
+      var post_id = comment.id.substr(2);
+      $$("#"+comment.id+" pre[name=code]").each(function(pre, index){
+        var location = window.location;
+        source_url = location.protocol + "//" + location.host + location.pathname + location.search;
+        source_url += "#" + comment.id;
+        pre.writeAttribute('codeable_id', post_id);
+        pre.writeAttribute('codeable_type', "BlogComment");
+        pre.writeAttribute('source_url', source_url);
+        pre.writeAttribute('pre_index', index);
+        pre.writeAttribute('title', '从零开始，创建GitHub团队开发环境');
+      });
+    });
+  }
+
+  function quote_comment(id) {
+    new Ajax.Request('/editor/quote', {
+      parameters: {'id':id, 'type':'BlogComment'},
+      onSuccess:function(response){editor.bbcode_editor.textarea.insertAfterSelection(response.responseText);
+        Element.scrollTo(editor.bbcode_editor.textarea.element);}
+    });
+  }
+
+  code_favorites_init();
+  processComment();
+  new WeiboShare({share_buttons: $('share_weibo'), img_scope: $('blog_content')});
+</script>
+
+
+
+
+        </div>
+
+        <div id="local">
+          <div class="local_top"></div>
+          <div id="blog_owner">
+  <div id="blog_owner_logo"><a href="http://joshuasabrina.iteye.com/"><img alt="joshuasabrina的博客" class="logo" src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/13d52b3f-bbcc-3fdf-abea-d6841a341367.jpg" title="joshuasabrina的博客: Sabrina &amp; Joshua Java Ivory Tower"></a></div>
+  <div id="blog_owner_name">joshuasabrina</div>
+</div>
+
+          <div id="blog_actions">
+            <ul>
+              <li>浏览: 9697 次</li>
+              
+              <li>来自: 上海</li>
+              <li><img src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/offline.gif"></li>
+              
+            </ul>
+          </div>
+          <div id="user_visits" class="clearfix">
+            <h5>最近访客 <span style="font-weight:normal;font-size:12px;padding-left:30px;"><a href="http://joshuasabrina.iteye.com/blog/user_visits">更多访客&gt;&gt;</a></span></h5>
+            
+              <div class="user_visit">
+                <div class="logo"><a href="http://dylinshi126.iteye.com/" target="_blank"><img alt="dylinshi126的博客" class="logo" src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/user-logo-thumb.gif" title="dylinshi126的博客: "></a></div>
+                <div class="left"><a href="http://dylinshi126.iteye.com/" target="_blank" title="dylinshi126">dylinshi126</a></div>
+              </div>
+            
+              <div class="user_visit">
+                <div class="logo"><a href="http://53873039oycg.iteye.com/" target="_blank"><img alt="53873039oycg的博客" class="logo" src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/4747c5fa-e726-3516-93c9-cea95d7cdc86-thumb.jpg" title="53873039oycg的博客: "></a></div>
+                <div class="left"><a href="http://53873039oycg.iteye.com/" target="_blank" title="53873039oycg">53873039oycg</a></div>
+              </div>
+            
+              <div class="user_visit">
+                <div class="logo"><a href="http://reeboo.iteye.com/" target="_blank"><img alt="marb的博客" class="logo" src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/e71de9de-d2fd-30b0-96d2-7ee71d07970f-thumb.jpg" title="marb的博客: ReeBoo"></a></div>
+                <div class="left"><a href="http://reeboo.iteye.com/" target="_blank" title="marb">marb</a></div>
+              </div>
+            
+              <div class="user_visit">
+                <div class="logo"><a href="http://hzg-bob.iteye.com/" target="_blank"><img alt="hzg_bob的博客" class="logo" src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/user-logo-thumb.gif" title="hzg_bob的博客: "></a></div>
+                <div class="left"><a href="http://hzg-bob.iteye.com/" target="_blank" title="hzg_bob">hzg_bob</a></div>
+              </div>
+            
+          </div>
+
+          
+
+                      <div id="blog_menu">
+              <h5>文章分类</h5>
+              <ul>
+                <li><a href="http://joshuasabrina.iteye.com/">全部博客 (38)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/266991">Java (20)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/266984">Hadoop (3)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/266985">HBase (1)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/266986">Hive (1)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/266987">Flume (1)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/266988">Mahout (0)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/266989">Pig (0)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/266990">Zookeeper (0)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/266992">Javascript (0)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/266993">Protocol (1)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/266994">GWT (2)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/267656">algorithm (5)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/267828">exception (0)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/268372">Tools (4)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/270549">Spring (1)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/271555">Architecture (0)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/273754">Production (1)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/279423">Performance Tunning (2)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/281979">benchmark (1)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/284086">Security (4)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/284989">Presentations (1)</a></li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/category/289874">Compression (1)</a></li>
+                
+              </ul>
+            </div>
+            <div id="month_blogs">
+              <h5>社区版块</h5>
+              <ul>
+                <li><a href="http://joshuasabrina.iteye.com/blog/news">我的资讯</a> (0)</li>
+                <li>
+                  <a href="http://joshuasabrina.iteye.com/blog/post">我的论坛</a> (0)
+                </li>
+                <li><a href="http://joshuasabrina.iteye.com/blog/answered_problems">我的问答</a> (0)</li>
+              </ul>
+            </div>
+            <div id="month_blogs">
+              <h5>存档分类</h5>
+              <ul>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/blog/monthblog/2013-09">2013-09</a> (1)</li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/blog/monthblog/2013-08">2013-08</a> (1)</li>
+                
+                  <li><a href="http://joshuasabrina.iteye.com/blog/monthblog/2013-07">2013-07</a> (5)</li>
+                
+                <li><a href="http://joshuasabrina.iteye.com/blog/monthblog_more">更多存档...</a></li>
+              </ul>
+            </div>
+            
+            
+              <div id="comments_top">
+                <h5>评论排行榜</h5>
+                <ul>
+                  
+                    <li><a href="http://joshuasabrina.iteye.com/blog/1798245" title="Java Security 总纲">Java Security 总纲</a></li>
+                  
+                    <li><a href="http://joshuasabrina.iteye.com/blog/1811065" title="A星算法的JAVA实现">A星算法的JAVA实现</a></li>
+                  
+                    <li><a href="http://joshuasabrina.iteye.com/blog/1880543" title="Java Makefile【转】">Java Makefile【转】</a></li>
+                  
+                </ul>
+              </div>
+            
+
+            <div id="guest_books">
+              <h5>最新评论</h5>
+              <ul>
+                
+                <li>
+                  <a href="http://joshuasabrina.iteye.com/" target="_blank" title="joshuasabrina">joshuasabrina</a>： 
+                  tianhandigeng 写道额 看完了还是不知道Java  ...<br>
+                  <a href="http://joshuasabrina.iteye.com/blog/1798245#bc2316880">Java Security 总纲</a>
+                </li>
+                
+                <li>
+                  <a href="http://tianhandigeng.iteye.com/" target="_blank" title="tianhandigeng">tianhandigeng</a>： 
+                  额 看完了还是不知道Java Security有什么作用 楼主 ...<br>
+                  <a href="http://joshuasabrina.iteye.com/blog/1798245#bc2316841">Java Security 总纲</a>
+                </li>
+                
+                <li>
+                  <a href="http://joshuasabrina.iteye.com/" target="_blank" title="joshuasabrina">joshuasabrina</a>： 
+                  w156445045 写道干啥的,咋全是英文。和ANT,MAV ...<br>
+                  <a href="http://joshuasabrina.iteye.com/blog/1880543#bc2314899">Java Makefile【转】</a>
+                </li>
+                
+                <li>
+                  <a href="http://w156445045.iteye.com/" target="_blank" title="w156445045">w156445045</a>： 
+                  干啥的,咋全是英文。<br>
+                  <a href="http://joshuasabrina.iteye.com/blog/1880543#bc2313707">Java Makefile【转】</a>
+                </li>
+                
+                <li>
+                  <a href="http://jiangwenxian.iteye.com/" target="_blank" title="jiangwenxian">jiangwenxian</a>： 
+                  教 主 万安！！！<br>
+                  <a href="http://joshuasabrina.iteye.com/blog/1811065#bc2301201">A星算法的JAVA实现</a>
+                </li>
+                
+              </ul>
+            </div>
+
+            <div class="local_bottom"></div>
+          
+        </div>
+      </div>
+
+      <div id="footer" class="clearfix">
+        <div id="copyright">
+          <hr>
+          声明：ITeye文章版权属于作者，受法律保护。没有作者书面许可不得转载。若作者同意转载，必须以超链接形式标明文章原始出处和作者。<br>
+          © 2003-2012 ITeye.com.   All rights reserved.  [ 京ICP证110151号  京公网安备110105010620 ]
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+  document.write("<img src='http://stat.iteye.com/?url="+ encodeURIComponent(document.location.href) + "&referrer=" + encodeURIComponent(document.referrer) + "&user_id=' width='0' height='0' />");
+</script><img src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/a.gif" height="0" width="0">
+
+<script src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/tracking.js" type="text/javascript"></script>
+
+    
+<script type="text/javascript" src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/tongji.js"></script><img src="%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%88%9B%E5%BB%BAGitHub%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%20_files/tongji.gif" border="0" height="1" width="1"><a href="http://tongji.linezing.com/report.html?unit_id=3111089" target="_blank">量子统计</a>
+      
+    
+  
+
+</body></html>
