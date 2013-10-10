@@ -1,0 +1,174 @@
+﻿@charset "utf-8";
+.main-div .left-div {
+width: 854px;
+float: left;
+overflow:hidden;
+}
+.main-div .right-div {
+  float: right;
+  width: 338px;
+}
+.tag-div .tag2 .content2 ul{
+ padding:0 0 3px 3px;
+}
+.tag-div .tag2 .content2 ul li {
+background: url("../images/dot1.gif") no-repeat 0px 9px;
+padding-left: 6px;
+width: 324px;
+height: 22px;
+word-break: keep-all;
+text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+}
+h1 {
+	font-family: "Microsoft YaHei", "黑体";
+	font-size: 24px;
+	line-height: 30px;
+	padding: 0;
+	margin: 0;
+}
+
+.content-title {
+	padding: 6px 0 0 0;
+}
+
+.content-title h1 {
+	line-height: 42px;
+}
+
+.content-info {
+	
+}
+
+.content-info .time {
+	color: #999999;
+	font-family: Arial;
+	line-height: 30px;
+}
+
+.content-info .kind {
+	color: #C62C1E;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.content-info a {
+	color: #C62C1E;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.content-content {
+	padding: 0px 10px 20px 0;
+	word-wrap: break-word;
+	word-break: normal;
+	white-space: normal;
+}
+.content-file ul li{
+  float: left;
+  background: #cccccc;
+  padding: 0px 20px 0 20px;
+  margin-right: 20px;
+}
+.content-yj {
+	width: 826px;
+	text-align: right;
+	padding: 0 14px 30px 0;
+}
+
+.content-yj span {
+	color: #777777;
+}
+
+.content-xg {
+	border-top: 1px solid #C62C1E;
+	width: 854px;
+	padding: 13px 0 13px 0;
+}
+
+.content-xg .xglj {
+	padding-bottom: 4px;
+	line-height:32px;
+}
+
+.content-xg ul li {
+	float: left;
+	width: 416px;
+	padding-right: 10px;
+	line-height:22px;
+	height:22px;
+	overflow:hidden;
+}
+
+.content-message {
+	border-top: 1px solid #C62C1E;
+	width: 840px;
+}
+
+.content-message .pl {
+	padding: 4px 0 13px 0;
+}
+
+.content-message .message {
+	border-top: 1px dotted #cccccc;
+	padding: 0 0 12px 0;
+	width: 700px;
+}
+
+.content-message .message .image {
+	padding: 18px 0 0 0;
+	float: left;
+}
+
+.content-message .message .text {
+	padding: 12px 0 0 15px;
+	float: left;
+	width: 640px;
+}
+
+.content-message .message .text p {
+	padding: 0;
+	margin: 0;
+}
+.message-form{
+	padding-left: 5px;
+}
+.message-form .title{
+ border: 1px solid #C62C1E;
+ width: 480px;
+}
+.message-form .text{
+ border: 1px solid #C62C1E;
+ width: 480px;
+ height:100px;
+ font-size: 12px;
+ line-height: 22px;
+}
+.message-form .code{
+ border: 1px solid #C62C1E;
+ width: 40px;
+}
+.pt6{
+  padding-top: 6px;
+}
+.download_div{
+ padding:25px 0 25px 0;
+}
+.download_div .dt_1{
+ font-size:14px;
+ font-weight:bold;
+ line-height:30px;
+}
+.download_div .dt_2{
+  line-height:18px;
+  padding:6px 20px 6px 20px;
+  background: #c3c3c3;
+}
+
+.tag-div .tag2 .content3 .list .right {
+width: 245px;
+}
+.tag-div .tag2 .content3 .list {
+padding: 4px 10px 2px 0px;
+}

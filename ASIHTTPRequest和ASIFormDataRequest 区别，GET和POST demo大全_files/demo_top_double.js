@@ -1,0 +1,18 @@
+document.writeln('<div>');
+document.writeln('<table width="100%" cellpadding="0" cellspacing="0">');
+document.writeln('<tr>');
+document.writeln('<td align="left">');
+document.writeln('<div>');
+document.writeln('<script type="text/javascript">var cpro_id = "u1265868";</script>');
+document.writeln('<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>');
+document.writeln('</div>');
+document.writeln('</td>');
+document.writeln('<td align="right">');
+document.writeln('<div>');
+document.writeln('<script type="text/javascript">var cpro_id = "u1265868";</script>');
+document.writeln('<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>');
+document.writeln('</div>');
+document.writeln('</td>');
+document.writeln('</tr>');
+document.writeln('</table>');
+document.writeln('</div>');

@@ -1,0 +1,108 @@
+﻿@charset "utf-8";
+body, div, dl, dt, dd, ul, ol, li, form, fieldset, input, textarea, blockquote, th, td {
+	margin:0;
+	padding:0;
+}
+table {
+	bordre-collapse:collapse;
+	boder-spacing:0;
+}
+img {
+	border:0;
+}
+ol, ul {
+	list-style:none;
+}
+a {
+	text-decoration:none;
+	color:#000;
+}
+a:hover {
+	color: #cc3333;
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+.cl {
+	clear:both;
+}
+.tl {
+	text-align:left;
+}
+.tr {
+	text-align:right;
+}
+.tc {
+	text-align:center;
+}
+.bold {
+	font-weight:bold;
+}
+.rel {
+	position:relative;
+}
+.abs {
+	position:absolute;
+}
+.none {
+	display:none;
+}
+.inline {
+	display: inline;
+}
+.vm {
+	vertical-align: middle;
+}
+.vt {
+	vertical-align: top;
+}
+.vb {
+	vertical-align: bottom;
+}
+.hide {
+	visibility: hidden;
+}
+.ma {
+	margin: 0 auto;
+}
+.pon {
+	cursor: pointer;
+}
+.oh {
+	overflow: hidden;
+}
+.w100p {
+	width: 100%;
+}
+.h100p {
+	height:100%;
+}
+.top {
+	top: 0px;
+}
+.right {
+	right: 0px;
+}
+.bottom {
+	bottom: 0px;
+}
+.left {
+	left: 0px;
+}
+.tdl {
+	text-decoration:underline;
+}
+.opacity5 {
+	filter:alpha(opacity=50);
+	opacity:0.5;
+}
+.opacity1 {
+	filter:alpha(opacity=1);
+	opacity:1;
+}
+.cc0000{
+ color: #cc0000;
+}
